@@ -5,7 +5,6 @@ function readFile (){
         if (err) throw err;
         var input = data;
         useDictionary(input);
-        topTen
     });
 }
 
@@ -54,14 +53,26 @@ function useDictionary (input) {
          
     })
     console.log(dictionary);
+    topTen(dictionary);
 }
 
-//found index of @
-//next:
-//find remaining characters after @
-//push remainig characters to an object 
-//add a frequency count per characters 
-//check if characters exist in object before adding or increasing frequency count 
+function topTen(dictionary) {
+    let sorted = [];
+    let topTen = [];
+    for (var domain in dictionary) {
+        sorted.push([domain, dictionary[domain]]);
+    }
+    sorted.sort(function(a, b) {
+    return b[1] - a[1];
+    });
+
+    for (let i=0; i<10; i++) {
+        topTen.push(sorted[i])
+
+    }
+    console.log('The top ten domains are:')
+    console.log(topTen);
+}
 
 
 readFile()
