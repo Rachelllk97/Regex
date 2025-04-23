@@ -21,27 +21,40 @@ function findString (input) {
 
 
 function useRegex (input) {
-
     let email_domain = "@softwire.com"
     let regex = /[A-Za-z0-9._%+-]+@softwire\.com/g
     let found = input.match(regex)
     let count = found.length
 
-console.log(count)
-console.log(found);
+}
+
+function findCharIndex(email, char) {
+    for (let i = 0; i < email.length; i++){
+        if(email[i] === "\@"){
+            return email.indexOf(i)
+    }
+
+}
 }
 
 function useDictionary (input) {
     let dictionary = {};
-    //let regex = /[A-Za-z0-9._%+-]+@+[A-Za-z]\.com/g
     let regex = /(\w[\w\.-]*\w@[a-zA-Z\d\.-]+\.[a-zA-Z]+)/g
     let found = input.match(regex)
     let count = found.length
-    console.log(count)
-    console.log(found)
-
-
+    found.forEach((email, i) => {
+        findCharIndex(email, i)
+    })
 }
+
+//found index of @
+//next:
+//find remaining characters after @
+//push remainig characters to an object 
+//add a frequency count per characters 
+//check if characters exist in object before adding or increasing frequency count 
+
+
 
 readFile()
 
